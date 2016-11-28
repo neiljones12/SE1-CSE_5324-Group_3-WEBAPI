@@ -53,7 +53,7 @@ namespace diy_helper.Controllers
                 SqlDataReader rd = cmd.ExecuteReader();
                 while (rd.Read())
                 {
-                    result = "{data:" + Convert.ToString(rd.GetSqlValue(1)) + "}";
+                    result = Convert.ToString(rd.GetSqlValue(1));
                 }
             }
 
