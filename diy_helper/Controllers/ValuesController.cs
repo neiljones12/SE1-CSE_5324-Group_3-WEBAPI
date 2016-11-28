@@ -62,9 +62,22 @@ namespace diy_helper.Controllers
         }
 
         // POST api/values
-        public string Post([FromBody]project value)
+        //public string Post(string value)
+        //{
+        //    return value;
+        //}
+
+        [HttpPost]
+        public bool Post([FromBody]string value)
         {
-            return value.ToString();
+            string constr = "Data Source=diy.database.windows.net;Initial Catalog=neil;Integrated Security=False;User Id=neil;Password=P@ssw0rd123;MultipleActiveResultSets=True";
+            SqlConnection con = new SqlConnection(constr); 
+            con.Open();
+            var sql = "UPDATE  [dbo].[data] SET DATA = '" + value + "' WHERE NAME = 'projects'";
+            SqlCommand cmd = new SqlCommand(sql,con);
+            cmd.ExecuteNonQuery();
+             
+            return true;
         }
 
         // PUT api/values/5
