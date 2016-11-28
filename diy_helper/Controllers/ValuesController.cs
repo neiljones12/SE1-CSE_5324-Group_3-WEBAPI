@@ -1,4 +1,5 @@
-﻿using System;
+﻿using diy_helper.Models;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
@@ -61,8 +62,9 @@ namespace diy_helper.Controllers
         }
 
         // POST api/values
-        public void Post([FromBody]string value)
+        public string Post([FromBody]project value)
         {
+            return value.ToString();
         }
 
         // PUT api/values/5
