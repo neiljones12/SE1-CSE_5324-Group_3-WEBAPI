@@ -78,11 +78,18 @@ namespace diy_helper.Controllers
             cmd.ExecuteNonQuery();
              
             return true;
-        }
+        } 
 
         // PUT api/values/5
-        public void Put(int id, [FromBody]string value)
+        public void Put(int? id, [FromBody]string value)
         {
+            string constr = "Data Source=diy.database.windows.net;Initial Catalog=neil;Integrated Security=False;User Id=neil;Password=P@ssw0rd123;MultipleActiveResultSets=True";
+            SqlConnection con = new SqlConnection(constr);
+            con.Open();
+            var sql = "UPDATE  [dbo].[data] SET DATA = '" + value + "' WHERE NAME = 'users'";
+            SqlCommand cmd = new SqlCommand(sql, con);
+            cmd.ExecuteNonQuery();
+
         }
 
         // DELETE api/values/5
